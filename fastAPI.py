@@ -42,3 +42,4 @@ async def upload_file(file: UploadFile = File(...)):
 
     #return HTML Website
     return f"{result.value}"
+

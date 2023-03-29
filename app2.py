@@ -130,3 +130,8 @@ print("DONE")
 # # Save modified HTML code to a file
 # with open('modified_page.html', 'w') as file:
 #     file.write(str(soup))
+
+# pip3 install pipreqs
+
+# # Run in current directory
+# python3 -m  pipreqs.pipreqs .
