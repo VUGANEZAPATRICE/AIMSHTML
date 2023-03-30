@@ -67,10 +67,6 @@ def translate_html(file):
     with open(f'assets/html/tran/{file}.html', 'w') as f:
         f.write(str(soup))
 
-def convert_html_to_doc(path):
-    # import aspose.words as aw
-    doc = aw.Document(f"assets/html/tran/{path[:-4]}.html")
-    return doc.save(f"assets/doc/tran/{path}.docx")
 
 @app.get("/", response_class=HTMLResponse)
 def upload_file_form():
