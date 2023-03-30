@@ -1,11 +1,22 @@
 from fastapi import FastAPI
 import mammoth 
-from fastapi import FastAPI, Response,File, UploadFile
+from fastapi import FastAPI, Response,File, UploadFile, Request
+from fastapi.templating import Jinja2Templates
+from fastapi.staticfiles import StaticFiles
 from fastapi.responses import HTMLResponse,FileResponse
 import os
 
+def get_files(path):
+    for file in os.listdir(path):
+        if os.path.isfile(os.path.join(path, file)):
+            yield file
+
+
 
 app = FastAPI()
+
+app.mount("/static", StaticFiles(directory="static"), name="static")
+templates = Jinja2Templates(directory="templates")
 
 
 #Save the document locally
@@ -41,5 +52,12 @@ async def upload_file(file: UploadFile = File(...)):
     messages = result.messages #any messages, such as warnings during conversion
 
     #return HTML Website
-    return f"{result.value}"
+    return contents
 
+@app.get('/translate')
+def translate(request: Request):
+    files = get_files('templates/html')
+    return templates.TemplateResponse("html/output.html", context ={
+        "request":request,
+        'files': files,
+        })
