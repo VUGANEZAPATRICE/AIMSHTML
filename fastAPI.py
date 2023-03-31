@@ -30,17 +30,15 @@ def get_files(path):
         if os.path.isfile(os.path.join(path, file)):
             yield file
 
-def docxToHtml(filePath):
-    doc = aw.Document(f"{filePath}")
-    # Enable export of fonts
+def docxToHtml(file):
+    doc = aw.Document(f"assets/doc/{file}")
     options = aw.saving.HtmlSaveOptions()
     options.export_font_resources = True
-    # Save the document as HTML
-    return doc.save(f'assets/html/{filePath}.html', options)
+    return doc.save(f'assets/html/{file[:-5]}.html', options)
 
 def translate_html(file):
     translator = GoogleTranslator(source='auto', target='rw')
-    with open(f'assets/html/{file[:-4]}.html', 'r') as f:
+    with open(f'assets/html/{file[:-5]}.html', 'r') as f:
         contents = f.read()
     soup = BeautifulSoup(contents, 'html.parser')
 
@@ -59,42 +57,39 @@ def translate_html(file):
                 translated_text = translator.translate(splitted)
             except:
                 pass
-            splitted_text = splitted_text+translated_text
+            splitted_text = f'{splitted_text} {translated_text}'
         print(splitted_text)
         
         element.string.replace_with(str(splitted_text))
     # Save modified HTML code to a file
-    with open(f'assets/html/tran/{file}.html', 'w') as f:
+    with open(f'assets/html/tran/{file[:-5]}.html', 'w') as f:
         f.write(str(soup))
 
 def convert_html_to_doc(path):
     # import aspose.words as aw
-    doc = aw.Document(f"assets/html/tran/{path[:-4]}.html")
-    return doc.save(f"assets/doc/tran/{path}.docx")
+    doc = aw.Document(f"assets/html/tran/{path[:-5]}.html")
+    return doc.save(f"assets/doc/tran/{path[:-5]}.docx")
 
 @app.get("/", response_class=HTMLResponse)
-def upload_file_form():
-    return """
-    <form method="post" action="/file" enctype="multipart/form-data">
-    <!-- upload of a single file -->
-    <p>
-        <label>Add file (single): </label><br/>
-        <input type="file" name="file"/>
-    </p>
-
-    <p>
-        <input type="submit"/>
-    </p>
-</form>
-"""
+def upload_file_form(request: Request):
+    return templates.TemplateResponse('index.html', context= {
+        'request' : request
+    })
 
 @app.post("/", response_class=HTMLResponse)
-async def upload_file(file: UploadFile = File(...)):
+async def upload_file(request: Request, file: UploadFile = File(...)):
     contents = await file.read()
-    docxToHtml(file)
-    translate_html(file)
+    save_docx(contents, file.filename)
+    docxToHtml(file.filename)
+    translate_html(file.filename)
+    convert_html_to_doc(file.filename)
+    files = get_files('assets/doc/tran')
+    return templates.TemplateResponse('index.html', context ={
+        "request":request,
+        'files': files
+        })
 
-    return contents
+
 
 @app.get('/translate')
 def translate(request: Request):
