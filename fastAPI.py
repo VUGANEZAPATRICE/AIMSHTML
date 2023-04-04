@@ -72,8 +72,12 @@ def convert_html_to_doc(path):
 
 @app.get("/", response_class=HTMLResponse)
 def upload_file_form(request: Request):
+    files = get_files('assets/doc/tran')
+
     return templates.TemplateResponse('index.html', context= {
-        'request' : request
+        'request' : request,
+        'files': files
+
     })
 
 @app.post("/", response_class=HTMLResponse)
