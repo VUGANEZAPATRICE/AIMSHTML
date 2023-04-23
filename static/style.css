@@ -13,7 +13,7 @@ header {
   padding: 1rem 0rem 1rem 2rem;
 }
 
-main {
+main{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -77,11 +77,6 @@ main  .upload-form {
   /* display: none; */
 
 }
-
-/* .main {
-  display: none;
-} */
-
 .loader > div {
   height: 100px;
   width: 100px;
@@ -102,4 +97,9 @@ main  .upload-form {
     transform: rotate(360deg);
   }
   
+}
+
+section .stats {
+  padding: 1rem 3rem;
+  border: red 2px solid !important;
 }

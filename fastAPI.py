@@ -80,7 +80,7 @@ def upload_file_form(request: Request):
 
     return templates.TemplateResponse('index.html', context={
         'request': request,
-        'files': files
+        'files': files,
     })
 
 
@@ -94,7 +94,8 @@ async def upload_file(request: Request, file: UploadFile = File(...)):
     files = get_files('assets/doc/tran')
     return templates.TemplateResponse('index.html', context={
         "request": request,
-        'files': files
+        'files': files,
+        'info': os.stat(file.filename)
     })
 
 
