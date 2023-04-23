@@ -10,4 +10,4 @@ lxml==4.9.2
 mammoth==1.5.0
 python-docx==0.8.11
 tqdm==4.65.0
-
+uvicorn==0.21.1
