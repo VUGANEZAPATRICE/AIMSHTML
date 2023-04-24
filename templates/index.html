@@ -39,7 +39,7 @@
       <div class="files">
         
         {% for file in files %}
-          {% if loop.counter == 1 and file != '.keep'%}
+          {% if loop.counter == 1%}
               <a href={{file}} download>
                 <span class="material-symbols-outlined">description</span>
                 {{file}}

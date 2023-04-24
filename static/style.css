@@ -1,3 +1,6 @@
+:root {
+  --primary : #751B08;
+}
 * {
   margin: 0;
   padding: 0;
@@ -33,7 +36,7 @@ main  .upload-form {
 }
 
 .upload-form form input[type='submit']{
-  background: #ff4d4d;
+  background: var(--primary);
   color: white;
   border: none;
   padding: .5rem 2rem;
@@ -61,7 +64,7 @@ main  .upload-form {
 
 .dowload-file .files a{
   text-decoration: none;
-  color: #ff4d4d;
+  color: var(--primary);
 }
 
 .dowload-file .files a span{
@@ -111,7 +114,7 @@ ul {
 }
 
 .stats h2 {
-  background: #ff4d4d;
+  background: var(--primary);
   margin: 0;
   width: 100%;
   padding: .8rem 1rem;
@@ -140,7 +143,7 @@ ul {
 }
 
 footer {
-  background: #aaaaaa;
+  background: var(--primary)  ;
   position: fixed;
   bottom: 0;
   right: 0;
