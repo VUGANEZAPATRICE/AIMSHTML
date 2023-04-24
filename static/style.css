@@ -138,3 +138,14 @@ ul {
   border-radius: 4px;
   margin-left: 1rem;
 }
+
+footer {
+  background: #aaaaaa;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  padding: 2rem 1rem;
+  color:aliceblue;
+  text-align: center;
+}

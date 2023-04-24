@@ -39,11 +39,13 @@
       <div class="files">
         
         {% for file in files %}
-          <a href={{file}} download>
-            <span class="material-symbols-outlined">description</span>
-            {{file}}
-            <span class="material-symbols-outlined">downloading</span>
-          </a>
+          {% if loop.counter == 1%}
+            <a href={{files}} download>
+              <span class="material-symbols-outlined">description</span>
+              {{file}}
+              <span class="material-symbols-outlined">downloading</span>
+            </a>
+          {% endif %}
         {% endfor %}
       </div>
     </div>
@@ -60,7 +62,9 @@
       {%endif %}
     </ul>
   </section>
-
+<footer>
+  &copy; 2023 AIMS, all right reserved
+</footer>
   <script>
     $(window).on('load',() => {
       $('.loader').fadeOut(1000);
