@@ -47,6 +47,7 @@ def translate_html(file):
     text_elements = [element for element in soup.find_all(
         string=True) if element.parent and element.parent.name not in ['script', 'style']]
     print(text_elements)
+    text_elements = [element for index, element in enumerate(text_elements) if index != 0 and index != 1 and index != len(text_elements)-1 ]
     for element in text_elements:
         # Extract the text from the element
         text = element.get_text(strip=True)

@@ -37,14 +37,15 @@
     <div class="dowload-file">
       <h1>Translated file will be here</h1>
       <div class="files">
-        
         {% for file in files %}
-          {% if loop.counter == 0%}
-              <a href={{file}} download>
-                <span class="material-symbols-outlined">description</span>
+          {% if loop.index == 1 %}
+            <a href="../assets/doc/tran/{{file}}" download>
+              <span class="material-symbols-outlined">description</span>
+              <span>
                 {{file}}
-                <span class="material-symbols-outlined">downloading</span>
-              </a>
+              </span>
+              <span class="material-symbols-outlined">downloading</span>
+            </a>
           {% endif %}
         {% endfor %}
       </div>
