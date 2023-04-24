@@ -49,18 +49,17 @@
       </div>
     </div>
   </main>
-  <section class="stats" style="padding: 1rem 4rem;">
-    <h3>File Informations</h3>
+  <section class="stats">
+    <h2>File Informations</h2>
     <ul>
       {% if info %}
-        <li>{{info.st_uid}}</li>
-        <li>{{info.st_dev}}</li>
-        <li>{{info.st_size}}</li>
-        <li>{{info.st_ino}}</li>
-        <li>{{info}}</li>
+        <li>File Group ID: <span>{{info.st_uid}}</span></li>
+        <li>Device ID: <span>{{info.st_dev}}</span></li>
+        <li>Size in bytes: <span>{{info.st_size}}</span></li>
+        <li>File Index: <span>{{info.st_ino}}</span> </li>
+        <li>Full Info: <span>st_mode=33188, st_ino=13024170, st_dev=66305, st_nlink=1, st_uid=1000, st_gid=1000, st_size=25270, st_atime=1682318782, st_mtime=1682318787, st_ctime=1682318787</span>{{info}}</li>
       {%endif %}
     </ul>
-
   </section>
 
   <script>

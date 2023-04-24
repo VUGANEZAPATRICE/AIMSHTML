@@ -99,7 +99,42 @@ main  .upload-form {
   
 }
 
-section .stats {
-  padding: 1rem 3rem;
-  border: red 2px solid !important;
+.stats {
+  border: 1px solid grey;
+  width: 90%;
+  margin: auto;
+  margin-top: 4rem;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.stats h2 {
+  background: #ff4d4d;
+  margin: 0;
+  width: 100%;
+  padding: .8rem 1rem;
+  color: white;
+  font-weight: bold;
+}
+
+.stats ul {
+  /* padding: 1rem; */
+}
+
+.stats ul li {
+  line-height: 2rem;
+  padding: .5rem 1rem;
+}
+
+.stats ul li:nth-child(even) {
+  background: #aaaaaa;
+}
+
+.stats ul li span {
+  /* background: #4d82f4; */
+  padding: .5rem 1rem;
+  border-radius: 4px;
+  margin-left: 1rem;
 }
