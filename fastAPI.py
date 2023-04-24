@@ -95,7 +95,7 @@ async def upload_file(request: Request, file: UploadFile = File(...)):
     return templates.TemplateResponse('index.html', context={
         "request": request,
         'files': files,
-        'info': os.stat(file.filename)
+        'info': os.stat(f'./assets/doc/tran/{file.filename}')
     })
 
 
