@@ -39,12 +39,12 @@
       <div class="files">
         
         {% for file in files %}
-          {% if loop.counter == 1%}
-            <a href={{files}} download>
-              <span class="material-symbols-outlined">description</span>
-              {{file}}
-              <span class="material-symbols-outlined">downloading</span>
-            </a>
+          {% if loop.counter == 1 and file != '.keep'%}
+              <a href={{file}} download>
+                <span class="material-symbols-outlined">description</span>
+                {{file}}
+                <span class="material-symbols-outlined">downloading</span>
+              </a>
           {% endif %}
         {% endfor %}
       </div>
@@ -58,12 +58,12 @@
         <li>Device ID: <span>{{info.st_dev}}</span></li>
         <li>Size in bytes: <span>{{info.st_size}}</span></li>
         <li>File Index: <span>{{info.st_ino}}</span> </li>
-        <li>Full Info: <span>st_mode=33188, st_ino=13024170, st_dev=66305, st_nlink=1, st_uid=1000, st_gid=1000, st_size=25270, st_atime=1682318782, st_mtime=1682318787, st_ctime=1682318787</span>{{info}}</li>
+        <li>Full Info: <span>{{info}}</span></li>
       {%endif %}
     </ul>
   </section>
 <footer>
-  &copy; 2023 AIMS, all right reserved
+  &copy; 2023 AIMS, all right reserved.
 </footer>
   <script>
     $(window).on('load',() => {
