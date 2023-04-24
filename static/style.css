@@ -96,7 +96,8 @@ main  .upload-form {
   border: 1px solid grey;
   width: 90%;
   margin: auto;
-  margin-top: 4rem;
+  margin-top: 2rem;
+  margin-bottom: 4rem;
 }
 
 ul {
@@ -114,7 +115,7 @@ ul {
 
 .stats ul li {
   line-height: 2rem;
-  padding: .5rem 1rem;
+  padding: .3rem 1rem;
 }
 
 .stats ul li:nth-child(even) {
@@ -133,7 +134,8 @@ footer {
   bottom: 0;
   right: 0;
   left: 0;
-  padding: 2rem 1rem;
+
+  padding: 1.2rem 1rem;
   color:aliceblue;
   text-align: center;
 }
